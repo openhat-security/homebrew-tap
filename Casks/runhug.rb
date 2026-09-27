@@ -12,12 +12,6 @@ cask "runhug" do
 
   binary "runhug_#{version}_darwin_#{arch}", target: "runhug"
 
-  # Clear quarantine if Gatekeeper blocks the unsigned binary:
-  #   xattr -dr com.apple.quarantine $(brew --prefix)/bin/runhug
-  caveats do
-    unsigned_binary
-  end
-
   zap trash: [
     "~/.config/runhug",
   ]
