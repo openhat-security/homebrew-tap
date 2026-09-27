@@ -12,10 +12,10 @@ cask "runhug" do
 
   binary "runhug_#{version}_darwin_#{arch}", target: "runhug"
 
-  # Unsigned GitHub Release binary
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-dr", "com.apple.quarantine", "#{staged_path}/runhug_#{version}_darwin_#{arch}"]
+  # Clear quarantine if Gatekeeper blocks the unsigned binary:
+  #   xattr -dr com.apple.quarantine $(brew --prefix)/bin/runhug
+  caveats do
+    unsigned_binary
   end
 
   zap trash: [
