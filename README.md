@@ -11,10 +11,10 @@ brew install --cask openhat-security/tap/runhug
 ```bash
 brew install --cask openhat-security/tap/hfpacks
 ```
-[openhat-security/runhug](https://github.com/openhat-security/hfpacks).
+[openhat-security/hfpacks](https://github.com/openhat-security/hfpacks).
 
 
 ```bash
 brew install --cask openhat-security/tap/truffles
 ```
-[openhat-security/runhug](https://github.com/openhat-security/truffles).
+[openhat-security/truffles](https://github.com/openhat-security/truffles).
