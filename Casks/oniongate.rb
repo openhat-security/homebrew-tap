@@ -18,7 +18,7 @@ cask "oniongate" do
     skip "Auto-generated on release."
   end
 
-  depends_on macos: ">= :big_sur"
+  depends_on macos: :big_sur
 
   app "OnionGate.app"
 
@@ -29,8 +29,8 @@ cask "oniongate" do
   end
 
   zap trash: [
-    "~/Library/Application Support/com.oniongate.app",
-    "~/Library/Preferences/com.oniongate.app.plist",
-    "~/Library/Saved Application State/com.oniongate.app.savedState",
+    "~/Library/Application Support/com.adamsiwiec.oniongate",
+    "~/Library/Preferences/com.adamsiwiec.oniongate.plist",
+    "~/Library/Saved Application State/com.adamsiwiec.oniongate.savedState",
   ]
 end
