@@ -1,13 +1,13 @@
 cask "phishkit" do
-  version "0.1.1-alpha.1"
+  version "0.1.1-alpha.4"
 
   on_arm do
-    sha256 "7788cd719f4f809b6c3bc17c42222e2d4ee9d69c6ccf790ec05b958c44a016c9"
+    sha256 "9a699ff585f1049adfc81904e100c9a968afa76264204fe0aa4529fe08f75f99"
 
     url "https://github.com/openhat-security/phishkit/releases/download/v#{version}/phishkit_#{version}_aarch64.dmg"
   end
   on_intel do
-    sha256 "35ab8379d8dcc3edd114d094c587c4e65ff4fde312f81dd1e341c3a2766d9438"
+    sha256 "890a2ab63cef713437946c91a09e9f50b8d71dfb44d0f44798e11a1c15e450e3"
 
     url "https://github.com/openhat-security/phishkit/releases/download/v#{version}/phishkit_#{version}_x64.dmg"
   end
