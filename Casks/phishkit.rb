@@ -1,45 +1,48 @@
 cask "phishkit" do
   version "0.1.1-alpha.1"
 
-  on_macos do
-    on_arm do
-      sha256 "9e3dc1f67228d2da3b06479c1647b9fc902169c97c7f5ae8d03ee799a40c8b82"
-      url "https://github.com/openhat-security/phishkit/releases/download/v#{version}/phishkit-#{version}-aarch64-apple-darwin.tar.gz"
-      binary "phishkit-#{version}-aarch64-apple-darwin/phishkit", target: "phishkit"
-      binary "phishkit-#{version}-aarch64-apple-darwin/phishkit_ctl", target: "phishkit_ctl"
-    end
-    on_intel do
-      sha256 "52409489ef30876258a3558fa19cd1134cebca2571c4b8e430c11fd14a2f4208"
-      url "https://github.com/openhat-security/phishkit/releases/download/v#{version}/phishkit-#{version}-x86_64-apple-darwin.tar.gz"
-      binary "phishkit-#{version}-x86_64-apple-darwin/phishkit", target: "phishkit"
-      binary "phishkit-#{version}-x86_64-apple-darwin/phishkit_ctl", target: "phishkit_ctl"
-    end
+  on_arm do
+    sha256 "7788cd719f4f809b6c3bc17c42222e2d4ee9d69c6ccf790ec05b958c44a016c9"
+
+    url "https://github.com/openhat-security/phishkit/releases/download/v#{version}/phishkit_#{version}_aarch64.dmg"
   end
-  on_linux do
-    on_intel do
-      sha256 "3adb36c6084d65bbaad9cc7c907620fb86d7e1abcc7d0b50944d57916027fd13"
-      url "https://github.com/openhat-security/phishkit/releases/download/v#{version}/phishkit-#{version}-x86_64-unknown-linux-gnu.tar.gz"
-      binary "phishkit-#{version}-x86_64-unknown-linux-gnu/phishkit", target: "phishkit"
-      binary "phishkit-#{version}-x86_64-unknown-linux-gnu/phishkit_ctl", target: "phishkit_ctl"
-    end
+  on_intel do
+    sha256 "35ab8379d8dcc3edd114d094c587c4e65ff4fde312f81dd1e341c3a2766d9438"
+
+    url "https://github.com/openhat-security/phishkit/releases/download/v#{version}/phishkit_#{version}_x64.dmg"
   end
 
   name "phishkit"
-  desc "Authorized AiTM + awareness assessment kit (CLI, alpha)"
+  desc "Authorized AiTM + awareness assessment desktop app, CLI included (alpha)"
   homepage "https://github.com/openhat-security/phishkit"
 
   livecheck do
     skip "Auto-generated on release."
   end
 
+  depends_on cask: "openhat-security/tap/phishkit-cli"
+  depends_on :macos
+
+  app "phishkit.app"
+
   postflight do
-    if OS.mac?
-      system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{staged_path}"]
-    end
+    system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{appdir}/phishkit.app"]
   end
 
+  zap trash: [
+    "~/Library/Application Support/com.phishkit.app",
+    "~/Library/Caches/com.phishkit.app",
+    "~/Library/Preferences/com.phishkit.app.plist",
+    "~/Library/Saved Application State/com.phishkit.app.savedState",
+  ]
+
   caveats <<~EOS
-    phishkit is an alpha build for authorized security assessments only.
-    See the authorized-use policy bundled with the archive before running it.
+    phishkit installs the desktop app into Applications and the phishkit CLI
+    (via the phishkit-cli cask). For the CLI on its own, install:
+      brew install openhat-security/tap/phishkit-cli
+
+    This is an alpha build for authorized security assessments only, and it is
+    not notarized. macOS Gatekeeper may warn on first launch.
+    See the authorized-use policy before running it.
   EOS
 end
