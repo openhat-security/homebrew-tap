@@ -1,15 +1,15 @@
 cask "phishkit-cli" do
-  version "0.1.1-alpha.6"
+  version "0.1.1-alpha.7"
 
   on_macos do
     on_arm do
-      sha256 "338e9e081c9933bf9d93e6f0a882bbcf1ad558e6ed6c0ef458307c09396d46b9"
+      sha256 "66a2de02c9207e33bfbfccebee9fe52e6aef6524b08b193ba4f491b60995e88d"
       url "https://github.com/openhat-security/phishkit/releases/download/v#{version}/phishkit-#{version}-aarch64-apple-darwin.tar.gz"
       binary "phishkit-#{version}-aarch64-apple-darwin/phishkit", target: "phishkit"
       binary "phishkit-#{version}-aarch64-apple-darwin/phishkit_ctl", target: "phishkit_ctl"
     end
     on_intel do
-      sha256 "3e9a14a1829512eede59e12a0ae0a8756fc1eb34d2149b60b991754856e1afe8"
+      sha256 "5b0f3abe73e5d6fb9004ce4494723b21fa96bd85ec85092221aa6bf7ad7db9e9"
       url "https://github.com/openhat-security/phishkit/releases/download/v#{version}/phishkit-#{version}-x86_64-apple-darwin.tar.gz"
       binary "phishkit-#{version}-x86_64-apple-darwin/phishkit", target: "phishkit"
       binary "phishkit-#{version}-x86_64-apple-darwin/phishkit_ctl", target: "phishkit_ctl"
@@ -17,7 +17,7 @@ cask "phishkit-cli" do
   end
   on_linux do
     on_intel do
-      sha256 "33edd04eee7891138e5c28d048bb122502bdf4fe2bfd6bf01d5fac411959ebeb"
+      sha256 "f600d2544cf057cc2637a290b4e7b24065a3ec1505a87c0ab6657caf4289b523"
       url "https://github.com/openhat-security/phishkit/releases/download/v#{version}/phishkit-#{version}-x86_64-unknown-linux-gnu.tar.gz"
       binary "phishkit-#{version}-x86_64-unknown-linux-gnu/phishkit", target: "phishkit"
       binary "phishkit-#{version}-x86_64-unknown-linux-gnu/phishkit_ctl", target: "phishkit_ctl"
