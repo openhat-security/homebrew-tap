@@ -22,10 +22,10 @@ cask "oniongate" do
 
   app "OnionGate.app"
 
-  postflight do
+  postflight_steps do
     # Alpha builds are not notarized yet; clear the quarantine bit so Gatekeeper
     # does not block the first launch.
-    system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{staged_path}"]
+    run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{staged_path}}"]
   end
 
   zap trash: [
