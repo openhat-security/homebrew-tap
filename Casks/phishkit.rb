@@ -25,8 +25,8 @@ cask "phishkit" do
 
   app "phishkit.app"
 
-  postflight do
-    system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{appdir}/phishkit.app"]
+  postflight_steps do
+    run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{appdir}}/phishkit.app"]
   end
 
   zap trash: [
